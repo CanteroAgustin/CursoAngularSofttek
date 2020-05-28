@@ -10,12 +10,20 @@ import { Subject } from 'rxjs';
 })
 export class RecipeService {
 
-  private recipes: Recipe[] = [
-    new Recipe("Test Recipe", "This is a sample test", "https://cdn.pixabay.com/photo/2016/06/15/19/09/food-1459693_960_720.jpg", [new Ingredient('Meat', 1), new Ingredient('French Fries', 20)])
-  ];
+  // private recipes: Recipe[] = [
+  //   new Recipe("Test Recipe", "This is a sample test", "https://cdn.pixabay.com/photo/2016/06/15/19/09/food-1459693_960_720.jpg", [new Ingredient('Meat', 1), new Ingredient('French Fries', 20)]),
+  //   new Recipe("Pizza Casera", "La mas rica", "https://cdn.pixabay.com/photo/2020/01/20/00/08/pizza-4779230_960_720.jpg", [new Ingredient('Harina', 1), new Ingredient('Queso', 2)])
+  // ];
+  private recipes: Recipe[] = [];
+  
   recipesChanged = new Subject<Recipe[]>();
 
   constructor(private shoppingListService: ShoppingListService) { }
+
+  setRecipes(recipes: Recipe[]){
+    this.recipes = recipes;
+    this.recipesChanged.next(this.recipes.slice());
+  }
 
   getRecipes() {
     return this.recipes.slice();
