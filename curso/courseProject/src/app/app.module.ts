@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core.module';
 import { HeaderComponent } from './header/header.component';
 import { SharedModule } from './shared/shared.module';
+import { LoggingService } from './logging.service';
 
 
 @NgModule({
@@ -20,7 +21,7 @@ import { SharedModule } from './shared/shared.module';
     SharedModule,
     CoreModule,
   ],
-  providers: [],
+  //providers: [LoggingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
